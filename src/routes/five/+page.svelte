@@ -38,7 +38,7 @@
       return
     }
 
-    if (first >= second || second >= third || third >= fourth || fourth >= fifth) {
+    if (first > second || second > third || third > fourth || fourth > fifth) {
       console.error('Error: Numbers must be in ascending order')
       err_mess1 = true
       return

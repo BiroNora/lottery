@@ -1,8 +1,17 @@
-<div class="container">
+<!-- Background image -->
+<div
+  class="h-screen bg-cover bg-no-repeat"
+  style="background-image: url('pic.png');">
+<div class="text-3xl font-bold underline">
 	<h1>Welcome to Controll Your Numbers</h1>
 </div>
+</div>
+<!-- Background image -->
 
-<style>
+<style lang="postcss">
+	:global(html) {
+    background-color: theme(colors.teal.50);
+  }
 	.container {
 		padding: 35px 15px 35px 15px;
 		display: flex;
