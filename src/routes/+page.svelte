@@ -1,7 +1,7 @@
 <!-- Background image -->
 <div
   class="h-screen bg-cover bg-no-repeat"
-  style="background-image: url('pic.png');">
+  style="background-image: url('balls.png');">
 <div class="text-3xl font-bold underline">
 	<h1>Welcome to Controll Your Numbers</h1>
 </div>
