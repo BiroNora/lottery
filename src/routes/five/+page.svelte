@@ -84,10 +84,16 @@
   <div class="main w-full h-full bg-no-repeat bg-cover" style="background-image: url('balls.png');">
 <body >
   <div class="main w-full h-full bg-no-repeat bg-cover" style="background-image: url('balls.png');">
+<body >
+  <div class="main w-full h-full bg-no-repeat bg-cover" style="background-image: url('balls.png');">
 		<h1 >Search on Pick-5 Lottery</h1>
 	  <br>
 	  <br>
+	  <br>
 
+    <!--<div class="response-data">
+      <pre>{responseDataFormatted}</pre>
+    </div>-->
     <!--<div class="response-data">
       <pre>{responseDataFormatted}</pre>
     </div>-->
@@ -154,6 +160,38 @@
         </table>
       </div>
     {/if}
+        {#if err_mess1}
+          <div class="text-white opacity-86 text-lg font-semibold" style="margin-bottom: 8rem;">
+            <p><i>Numbers must be in increasing order.</i></p>
+          </div>
+        {/if}
+      </form>
+    </div>
+
+
+    {#if no_res === true}
+      <div class="container" style="margin-bottom: 8rem;">
+        <p><i>No result.</i></p>
+      </div>
+    {/if}
+    {#if show === true}
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Amount</th>
+              <th>Year / Week</th>
+            </tr>
+          </thead>
+          <tbody>
+            {#each lotteryData as lot}
+              <tr>{formats(lot.f_total)} Ft</tr>
+              <tr>{lot.f_year} / {lot.f_week}</tr>
+            {/each}
+          </tbody>
+        </table>
+      </div>
+    {/if}
     {#if no_res === true}
       <div class="container" style="margin-bottom: 8rem;">
         <p><i>No result.</i></p>
@@ -178,6 +216,7 @@
       </div>
     {/if}
 </div>
+</body>
 </body>
 </body>
 
