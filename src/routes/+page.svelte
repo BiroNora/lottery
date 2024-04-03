@@ -1,33 +1,12 @@
 <!-- Background image -->
-<div
-  class="h-screen bg-cover bg-no-repeat"
-  style="background-image: url('balls.png');">
-<div class="text-3xl font-bold underline">
-	<h1>Welcome to Controll Your Numbers</h1>
+<div class="w-full h-full bg-no-repeat bg-cover" style="background-image: url('balls.png');">
+
+	<div class="h-screen flex items-center justify-center font-poppins text-5xl text-slate-50">
+		<p>Welcome to Control Your Numbers</p>
+	</div>
 </div>
-</div>
+
 <!-- Background image -->
 
-<style lang="postcss">
-	:global(html) {
-    background-color: theme(colors.teal.50);
-  }
-	.container {
-		padding: 35px 15px 35px 15px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		align-content: space-around;
-		line-height: 85%;
-		grid-row: minmax(5px, auto);
-		margin: 10px auto 10px auto;
-		border: 2px solid #32bea6;
-		border-radius: 5px;
-		border-spacing: 2px;
-		flex: 10 auto;
-	}
-	h1 {
-		display: flex;
-		align-items: center;
-	}
+<style>
 </style>
