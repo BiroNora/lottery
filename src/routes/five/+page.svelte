@@ -78,74 +78,71 @@
 				console.error('Error:', error);
 		}
 	}
-
 </script>
 
-<div class="main">
+<body >
+  <div class="main w-full h-full bg-no-repeat bg-cover" style="background-image: url('balls.png');">
 		<h1 >Search on Pick-5 Lottery</h1>
-	<br>
+	  <br>
 
-  <!--<div class="response-data">
-		<pre>{responseDataFormatted}</pre>
-	</div>-->
+    <!--<div class="response-data">
+      <pre>{responseDataFormatted}</pre>
+    </div>-->
 
-  <div>
-    <form on:submit={sendDataWithForm}>
-      <input type="number" bind:value={first} min={minValue} max={maxValue} required>
-      <input type="number" bind:value={second} min={minValue} max={maxValue} required>
-      <input type="number" bind:value={third} min={minValue} max={maxValue} required>
-      <input type="number" bind:value={fourth} min={minValue} max={maxValue} required>
-      <input type="number" bind:value={fifth} min={minValue} max={maxValue} required>
-      <button
-        class="btn"
-        id="btn"
-        type="submit"
-      >
-      Confirm
-	    </button>
-      {#if err_mess}
-        <div class="container" style="margin-bottom: 8rem;">
-          <p><i>Numbers can not be the same.</i></p>
-        </div>
-      {/if}
+    <div class="h-screen flex items-center justify-center font-poppins text-3xl font-semibold">
+      <form on:submit={sendDataWithForm}>
+        <input class="rounded opacity-86" type="number" bind:value={first} min={minValue} max={maxValue} required>
+        <input class="rounded opacity-86" type="number" bind:value={second} min={minValue} max={maxValue} required>
+        <input class="rounded opacity-86" type="number" bind:value={third} min={minValue} max={maxValue} required>
+        <input class="rounded opacity-86" type="number" bind:value={fourth} min={minValue} max={maxValue} required>
+        <input class="rounded opacity-86" type="number" bind:value={fifth} min={minValue} max={maxValue} required>
+        <button
+          class="text-white"
+          id="btn"
+          type="submit"
+        >
+        Confirm
+        </button>
+        {#if err_mess}
+          <div class="text-white opacity-86 text-lg" style="margin-bottom: 8rem;">
+            <p><i>Numbers can not be the same.</i></p>
+          </div>
+        {/if}
 
-      {#if err_mess1}
-        <div class="container" style="margin-bottom: 8rem;">
-          <p><i>Numbers must be in increasing order.</i></p>
-        </div>
-      {/if}
-    </form>
-  </div>
-
-
-  {#if no_res === true}
-    <div class="container" style="margin-bottom: 8rem;">
-      <p><i>No result.</i></p>
+        {#if err_mess1}
+          <div class="text-white opacity-86 text-lg font-semibold" style="margin-bottom: 8rem;">
+            <p><i>Numbers must be in increasing order.</i></p>
+          </div>
+        {/if}
+      </form>
     </div>
-  {/if}
-  {#if show === true}
-    <div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Amount</th>
-            <th>Year / Week</th>
-          </tr>
-        </thead>
-        <tbody>
-          {#each lotteryData as lot}
-            <tr>{formats(lot.f_total)} Ft</tr>
-            <tr>{lot.f_year} / {lot.f_week}</tr>
-          {/each}
-        </tbody>
-      </table>
-    </div>
-  {/if}
-</div>
 
-<div>
 
+    {#if no_res === true}
+      <div class="container" style="margin-bottom: 8rem;">
+        <p><i>No result.</i></p>
+      </div>
+    {/if}
+    {#if show === true}
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Amount</th>
+              <th>Year / Week</th>
+            </tr>
+          </thead>
+          <tbody>
+            {#each lotteryData as lot}
+              <tr>{formats(lot.f_total)} Ft</tr>
+              <tr>{lot.f_year} / {lot.f_week}</tr>
+            {/each}
+          </tbody>
+        </table>
+      </div>
+    {/if}
 </div>
+</body>
 
 <style>
 
