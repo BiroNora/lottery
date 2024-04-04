@@ -10,7 +10,6 @@
   const maxValue = 90
   let lotteryData: any = []
   let err_mess = false
-  let err_mess1 = false
   let no_res = false
   let show = false
   let responseDataFormatted: any = null
