@@ -125,7 +125,7 @@
             <div class="flex flex-col items-center justify-center">
               {#each lotteryData as lot}
                 <p>Amount: {formats(lot.f_total)} Ft</p>
-                <p>Year/Week: {lot.f_year} / {lot.f_week}</p>
+                <p>Year/Week: {lot.f_year}/{lot.f_week}</p>
               {/each}
             </div>
           {/if}
