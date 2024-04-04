@@ -83,7 +83,7 @@
 
 
   <div class="h-screen bg-no-repeat bg-cover" style="background-image: url('balls100.jpg');">
-    <body class="p-12 bg-slate-900">
+    <body class="pt-12 bg-slate-900">
       <div>
         <br>
         <p class="flex items-center justify-center font-poppins font-extrabold text-5xl text-gray-50">Search on Pick-5 Lottery</p>
@@ -108,7 +108,7 @@
             </button>
           </form>
         </div>
-        <div class="pt-4 flex flex-col items-center justify-center font-poppins font-extrabold text-white opacity-86 text-3xl">
+        <div class="pt-6 pb-6 flex flex-col items-center justify-center font-poppins font-extrabold text-white opacity-86 text-3xl">
           {#if err_mess}
             <div >
               <p><i>Numbers can not be the same.</i></p>
@@ -122,7 +122,7 @@
           {/if}
 
           {#if show === true}
-            <div class="pt-2 flex flex-col items-center justify-center">
+            <div class="flex flex-col items-center justify-center">
               {#each lotteryData as lot}
                 <p>Amount: {formats(lot.f_total)} Ft</p>
                 <p>Year/Week: {lot.f_year} / {lot.f_week}</p>
