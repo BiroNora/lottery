@@ -10,7 +10,7 @@ export async function POST({ request }) {
     fourth,
     fifth
   } = formData
-
+  console.log(first, second, third, fourth, fifth)
   try {
     const lotteryData = await db.$queryRaw`
       SELECT * FROM five
@@ -40,7 +40,7 @@ export async function POST({ request }) {
       status: responseStatus,
       headers: responseHeaders
     })
-    console.log(response)
+    // console.log(response)
     return response
   } catch (error) {
     console.error('Error:', error)

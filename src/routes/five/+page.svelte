@@ -26,7 +26,6 @@
 
   async function sendDataWithForm(event: any) {
     err_mess = false
-    err_mess1 = false
     no_res = false
     show = false
 		event.preventDefault()
@@ -38,11 +37,14 @@
       return
     }
 
-    if (first > second || second > third || third > fourth || fourth > fifth) {
-      console.error('Error: Numbers must be in ascending order')
-      err_mess1 = true
-      return
-    }
+    let arr = [first, second, third, fourth, fifth]
+    arr.sort((a, b) => a - b)
+
+    first = arr[0]
+    second = arr[1]
+    third = arr[2]
+    fourth = arr[3]
+    fifth = arr[4]
 
 		try {
       const formData: RequestPayload = {
@@ -80,8 +82,8 @@
 	}
 </script>
 
-<body >
-  <div class="main w-full h-full bg-no-repeat bg-cover" style="background-image: url('balls.png');">
+<body>
+  <div class="h-screen bg-no-repeat bg-cover" style="background-image: url('balls100.jpg');">
 		<h1 >Search on Pick-5 Lottery</h1>
 	  <br>
 
@@ -89,7 +91,7 @@
       <pre>{responseDataFormatted}</pre>
     </div>-->
 
-    <div class="h-screen flex items-center justify-center font-poppins text-3xl font-semibold">
+    <div class="flex items-center justify-center font-poppins text-3xl font-semibold">
       <form on:submit={sendDataWithForm}>
         <input class="rounded bg-slate-500 opacity-90 text-white font-bold text-opacity-100" type="number" bind:value={first} min={minValue} max={maxValue} required>
         <input class="rounded bg-slate-500 opacity-90 text-white font-bold text-opacity-100" type="number" bind:value={second} min={minValue} max={maxValue} required>
@@ -109,12 +111,6 @@
       {#if err_mess}
         <div >
           <p><i>Numbers can not be the same.</i></p>
-        </div>
-      {/if}
-
-      {#if err_mess1}
-        <div >
-          <p><i>Numbers must be in increasing order.</i></p>
         </div>
       {/if}
 
