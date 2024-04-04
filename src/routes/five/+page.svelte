@@ -81,7 +81,7 @@
 </script>
 
 <body >
-  <div class="main w-full h-full bg-no-repeat bg-cover" style="background-image: url('balls111.png');">
+  <div class="main w-full h-full bg-no-repeat bg-cover" style="background-image: url('balls.png');">
 		<h1 >Search on Pick-5 Lottery</h1>
 	  <br>
 
@@ -103,45 +103,46 @@
         >
         Confirm
         </button>
-        {#if err_mess}
-          <div class="text-white opacity-86 text-lg" style="margin-bottom: 8rem;">
-            <p><i>Numbers can not be the same.</i></p>
-          </div>
-        {/if}
-
-        {#if err_mess1}
-          <div class="text-white opacity-86 text-lg font-semibold" style="margin-bottom: 8rem;">
-            <p><i>Numbers must be in increasing order.</i></p>
-          </div>
-        {/if}
       </form>
     </div>
+    <div class="font-poppins font-semibold text-white opacity-86 text-lg" style="margin-bottom: 8rem;">
+      {#if err_mess}
+        <div >
+          <p><i>Numbers can not be the same.</i></p>
+        </div>
+      {/if}
 
+      {#if err_mess1}
+        <div >
+          <p><i>Numbers must be in increasing order.</i></p>
+        </div>
+      {/if}
 
-    {#if no_res === true}
-      <div class="container" style="margin-bottom: 8rem;">
-        <p><i>No result.</i></p>
-      </div>
-    {/if}
-    {#if show === true}
-      <div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Amount</th>
-              <th>Year / Week</th>
-            </tr>
-          </thead>
-          <tbody>
-            {#each lotteryData as lot}
-              <tr>{formats(lot.f_total)} Ft</tr>
-              <tr>{lot.f_year} / {lot.f_week}</tr>
-            {/each}
-          </tbody>
-        </table>
-      </div>
-    {/if}
-</div>
+      {#if no_res === true}
+        <div >
+          <p><i>No result.</i></p>
+        </div>
+      {/if}
+      {#if show === true}
+        <div >
+          <table >
+            <thead>
+              <tr>
+                <th>Amount</th>
+                <th>Year / Week</th>
+              </tr>
+            </thead>
+            <tbody>
+              {#each lotteryData as lot}
+                <tr>{formats(lot.f_total)} Ft</tr>
+                <tr>{lot.f_year} / {lot.f_week}</tr>
+              {/each}
+            </tbody>
+          </table>
+        </div>
+      {/if}
+    </div>
+  </div>
 </body>
 
 <style>
