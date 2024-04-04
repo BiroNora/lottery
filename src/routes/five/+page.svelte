@@ -94,11 +94,11 @@
 
         <div class="pt-10 flex flex-col items-center justify-center font-poppins text-3xl font-semibold">
           <form on:submit={sendDataWithForm}>
-            <input class="rounded bg-slate-500 opacity-90 text-white font-bold text-opacity-100" type="number" bind:value={first} min={minValue} max={maxValue} required>
-            <input class="rounded bg-slate-500 opacity-90 text-white font-bold text-opacity-100" type="number" bind:value={second} min={minValue} max={maxValue} required>
-            <input class="rounded bg-slate-500 opacity-90 text-white font-bold text-opacity-100" type="number" bind:value={third} min={minValue} max={maxValue} required>
-            <input class="rounded bg-slate-500 opacity-90 text-white font-bold text-opacity-100" type="number" bind:value={fourth} min={minValue} max={maxValue} required>
-            <input class="rounded bg-slate-500 opacity-90 text-white font-bold text-opacity-100" type="number" bind:value={fifth} min={minValue} max={maxValue} required>
+            <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={first} min={minValue} max={maxValue} required>
+            <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={second} min={minValue} max={maxValue} required>
+            <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={third} min={minValue} max={maxValue} required>
+            <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={fourth} min={minValue} max={maxValue} required>
+            <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={fifth} min={minValue} max={maxValue} required>
             <button
               class="text-white md:hover:text-lime-300"
               id="btn"
