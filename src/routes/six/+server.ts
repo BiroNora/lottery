@@ -11,7 +11,7 @@ export async function POST({ request }) {
     fifth,
     sixth
   } = formData
-
+  console.log(first, second, third, fourth, fifth, sixth)
   try {
     const lotteryData = await db.$queryRaw`
       SELECT * FROM six

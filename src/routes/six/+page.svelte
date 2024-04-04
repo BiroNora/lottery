@@ -11,7 +11,6 @@
   const maxValue = 45
   let lotteryData: any = []
   let err_mess = false
-  let err_mess1 = false
   let no_res = false
   let show = false
   let responseDataFormatted: any = null
@@ -27,25 +26,28 @@
 
   async function sendDataWithForm(event: any) {
     err_mess = false
-    err_mess1 = false
     no_res = false
     show = false
 		event.preventDefault()
     if (first === second || first === third || first === fourth || first === fifth || first === sixth ||
-      second === third || second === fourth || second === fifth || second === sixth ||
-      third === fourth || third === fifth || third === sixth ||
-      fourth === fifth || fourth === sixth ||
-      fifth === sixth) {
-  console.error('Error: Two or more input fields have the same value')
-  err_mess = true
-  return
-}
-
-    if (first > second || second > third || third > fourth || fourth > fifth || fifth > sixth) {
-      console.error('Error: Numbers must be in ascending order')
-      err_mess1 = true
+        second === third || second === fourth || second === fifth || second === sixth ||
+        third === fourth || third === fifth || third === sixth ||
+        fourth === fifth || fourth === sixth ||
+        fifth === sixth) {
+      console.error('Error: Two or more input fields have the same value')
+      err_mess = true
       return
     }
+
+    let arr = [first, second, third, fourth, fifth, sixth]
+    arr.sort((a, b) => a - b)
+
+    first = arr[0]
+    second = arr[1]
+    third = arr[2]
+    fourth = arr[3]
+    fifth = arr[4]
+    sixth = arr[5]
 
 		try {
       const formData: RequestPayload = {
@@ -114,11 +116,7 @@
         </div>
       {/if}
 
-      {#if err_mess1}
-        <div class="container" style="margin-bottom: 8rem;">
-          <p><i>Numbers must be in increasing order.</i></p>
-        </div>
-      {/if}
+      
     </form>
   </div>
 
