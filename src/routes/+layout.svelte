@@ -17,7 +17,7 @@
     <div class="hidden w-full md:block md:w-auto" id="navbar-default">
       <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
         <li>
-          <a href="/" class="font-poppins block py-2 px-3 text-gray-100 md:hover:text-lime-300" aria-current="page">
+          <a href="/" class="font-poppins block py-2 px-3 text-gray-100 md:hover:text-pink-400" aria-current="page">
 						Home</a>
         </li>
 				<li>
