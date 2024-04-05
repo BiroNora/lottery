@@ -81,55 +81,54 @@
 	}
 </script>
 
+<div class="h-screen bg-no-repeat bg-cover" style="background-image: url('balls100.jpg');">
+  <body class="pt-12 bg-slate-900">
+    <div>
+      <br>
+      <p class="flex items-center justify-center font-poppins font-extrabold text-5xl text-gray-50">Search on Pick-5 Lottery</p>
 
-  <div class="h-screen bg-no-repeat bg-cover" style="background-image: url('balls100.jpg');">
-    <body class="pt-12 bg-slate-900">
-      <div>
-        <br>
-        <p class="flex items-center justify-center font-poppins font-extrabold text-5xl text-gray-50">Search on Pick-5 Lottery</p>
+      <!--<div class="response-data">
+        <pre>{responseDataFormatted}</pre>
+      </div>-->
 
-        <!--<div class="response-data">
-          <pre>{responseDataFormatted}</pre>
-        </div>-->
-
-        <div class="pt-10 flex flex-col items-center justify-center font-poppins text-3xl font-semibold">
-          <form on:submit={sendDataWithForm}>
-            <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={first} min={minValue} max={maxValue} required>
-            <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={second} min={minValue} max={maxValue} required>
-            <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={third} min={minValue} max={maxValue} required>
-            <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={fourth} min={minValue} max={maxValue} required>
-            <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={fifth} min={minValue} max={maxValue} required>
-            <button
-              class="text-white md:hover:text-lime-300"
-              id="btn"
-              type="submit"
-            >
-            Confirm
-            </button>
-          </form>
-        </div>
-        <div class="pt-6 pb-6 flex flex-col items-center justify-center font-poppins font-extrabold text-white opacity-86 text-3xl">
-          {#if err_mess}
-            <div >
-              <p><i>Numbers can not be the same.</i></p>
-            </div>
-          {/if}
-
-          {#if no_res === true}
-            <div>
-              <p>No result.</p>
-            </div>
-          {/if}
-
-          {#if show === true}
-            <div class="flex flex-col items-center justify-center">
-              {#each lotteryData as lot}
-                <p>Amount: {formats(lot.f_total)} Ft</p>
-                <p>Year/Week: {lot.f_year}/{lot.f_week}</p>
-              {/each}
-            </div>
-          {/if}
-        </div>
+      <div class="pt-10 flex flex-col items-center justify-center font-poppins text-3xl font-semibold">
+        <form on:submit={sendDataWithForm}>
+          <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={first} min={minValue} max={maxValue} required>
+          <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={second} min={minValue} max={maxValue} required>
+          <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={third} min={minValue} max={maxValue} required>
+          <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={fourth} min={minValue} max={maxValue} required>
+          <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={fifth} min={minValue} max={maxValue} required>
+          <button
+            class="text-white md:hover:text-lime-300"
+            id="btn"
+            type="submit"
+          >
+          Confirm
+          </button>
+        </form>
       </div>
-    </body>
-  </div>
+      <div class="pt-6 pb-6 flex flex-col items-center justify-center font-poppins font-extrabold text-white opacity-86 text-3xl">
+        {#if err_mess}
+          <div >
+            <p><i>Numbers can not be the same.</i></p>
+          </div>
+        {/if}
+
+        {#if no_res === true}
+          <div>
+            <p>No result.</p>
+          </div>
+        {/if}
+
+        {#if show === true}
+          <div class="flex flex-col items-center justify-center">
+            {#each lotteryData as lot}
+              <p>Amount: {formats(lot.f_total)} Ft</p>
+              <p>Year/Week: {lot.f_year}/{lot.f_week}</p>
+            {/each}
+          </div>
+        {/if}
+      </div>
+    </div>
+  </body>
+</div>

@@ -71,7 +71,7 @@
 				const responseData = await response.json();
 					//formatAndSetResponseData(responseData);
 					lotteryData = responseData.lotteryData;
-					console.log('RESPONSEData:' + responseData);
+					//console.log('RESPONSEData:' + responseData);
           if ((!lotteryData) || lotteryData.length === 0) {
             no_res = true
           } else {
@@ -87,69 +87,55 @@
 
 </script>
 
-<div class="main">
-		<h1 >Search on Pick-6 Lottery</h1>
-	<br>
-
-  <!--<div class="response-data">
-		<pre>{responseDataFormatted}</pre>
-	</div>-->
-
-  <div>
-    <form on:submit={sendDataWithForm}>
-      <input type="number" bind:value={first} min={minValue} max={maxValue} required>
-      <input type="number" bind:value={second} min={minValue} max={maxValue} required>
-      <input type="number" bind:value={third} min={minValue} max={maxValue} required>
-      <input type="number" bind:value={fourth} min={minValue} max={maxValue} required>
-      <input type="number" bind:value={fifth} min={minValue} max={maxValue} required>
-      <input type="number" bind:value={sixth} min={minValue} max={maxValue} required>
-      <button
-        class="btn"
-        id="btn"
-        type="submit"
-      >
-      Confirm
-	    </button>
-      {#if err_mess}
-        <div class="container" style="margin-bottom: 8rem;">
-          <p><i>Numbers can not be the same.</i></p>
-        </div>
-      {/if}
-
-      
-    </form>
-  </div>
-
-
-  {#if no_res === true}
-    <div class="container" style="margin-bottom: 8rem;">
-      <p><i>No result.</i></p>
-    </div>
-  {/if}
-  {#if show === true}
+<div class="h-screen bg-no-repeat bg-cover" style="background-image: url('balls100.jpg');">
+  <body class="pt-12 bg-slate-900">
     <div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Amount</th>
-            <th>Year / Week</th>
-          </tr>
-        </thead>
-        <tbody>
-          {#each lotteryData as lot}
-            <tr>{formats(lot.s_total)} Ft</tr>
-            <tr>{lot.s_year} / {lot.s_week}</tr>
-          {/each}
-        </tbody>
-      </table>
+      <br>
+      <p class="flex items-center justify-center font-poppins font-extrabold text-5xl text-gray-50">Search on Pick-6 Lottery</p>
+
+      <!--<div class="response-data">
+        <pre>{responseDataFormatted}</pre>
+      </div>-->
+
+      <div class="pt-10 flex flex-col items-center justify-center font-poppins text-3xl font-semibold">
+        <form on:submit={sendDataWithForm}>
+          <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={first} min={minValue} max={maxValue} required>
+          <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={second} min={minValue} max={maxValue} required>
+          <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={third} min={minValue} max={maxValue} required>
+          <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={fourth} min={minValue} max={maxValue} required>
+          <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={fifth} min={minValue} max={maxValue} required>
+          <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={sixth} min={minValue} max={maxValue} required>
+          <button
+            class="text-white md:hover:text-lime-300"
+            id="btn"
+            type="submit"
+          >
+          Confirm
+          </button>
+        </form>
+      </div>
+      <div class="pt-6 pb-6 flex flex-col items-center justify-center font-poppins font-extrabold text-white opacity-86 text-3xl">
+        {#if err_mess}
+          <div >
+            <p><i>Numbers can not be the same.</i></p>
+          </div>
+        {/if}
+
+        {#if no_res === true}
+          <div>
+            <p>No result.</p>
+          </div>
+        {/if}
+
+        {#if show === true}
+          <div class="flex flex-col items-center justify-center">
+            {#each lotteryData as lot}
+              <p>Amount: {formats(lot.s_total)} Ft</p>
+              <p>Year/Week: {lot.s_year}/{lot.s_week}</p>
+            {/each}
+          </div>
+        {/if}
+      </div>
     </div>
-  {/if}
+  </body>
 </div>
-
-<div>
-
-</div>
-
-<style>
-
-</style>
