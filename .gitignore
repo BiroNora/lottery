@@ -1,12 +1,16 @@
 !.env.example
+!.env.example
 .DS_Store
 .env
 .env.*
-Lotto table_upload.ipynb
+Lotto_table_upload.ipynb
 .ipynb*
 /.svelte-kit
 /build
+/build
 /package
+data
+node_modules
 data
 node_modules
 vite.config.js.timestamp-*
