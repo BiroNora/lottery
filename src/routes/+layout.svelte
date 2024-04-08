@@ -1,5 +1,8 @@
 <script lang="ts">
 	import "../app.css";
+  import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+
+  injectSpeedInsights();
 </script>
 
 <nav class="fixed top-0 left-0 w-full h-12 bg-black">
