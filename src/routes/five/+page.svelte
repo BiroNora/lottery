@@ -13,6 +13,7 @@
   let no_res = false
   let show = false
   let responseDataFormatted: any = null
+  let url = "POSTGRES_PRISMA_URL"
 
   // For JSON visualization
 	function formatAndSetResponseData(responseData: any) {
@@ -54,7 +55,7 @@
         fifth
       }
 
-			const response = await fetch('http://localhost:5173/five', {
+			const response = await fetch(url, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
