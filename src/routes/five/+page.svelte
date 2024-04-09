@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RequestPayload } from "./+server"
-  import {PUBLIC_API_KEY} from '$env/static/public';
+  import { PUBLIC_API_KEY } from '$env/static/public';
 
   let first: number
   let second: number
