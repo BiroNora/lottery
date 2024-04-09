@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { RequestPayload } from "./+server"
+  import {SECRET_API_KEY} from '$env/static/private';
 
   let first: number
   let second: number
@@ -13,7 +14,6 @@
   let no_res = false
   let show = false
   let responseDataFormatted: any = null
-  let url = "POSTGRES_PRISMA_URL"
 
   // For JSON visualization
 	function formatAndSetResponseData(responseData: any) {
@@ -47,6 +47,7 @@
     fifth = arr[4]
 
 		try {
+      let url = `yourApi&apiKey=${SECRET_API_KEY}`;
       const formData: RequestPayload = {
         first,
         second,
