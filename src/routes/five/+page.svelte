@@ -54,7 +54,7 @@
         fifth
       }
 
-			const response = await fetch('http://localhost:5173/five', {
+			const response = await fetch('https://lottery-gamma-three.vercel.app/five', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

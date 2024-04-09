@@ -59,7 +59,7 @@
         sixth
       }
 
-			const response = await fetch('http://localhost:5173/six', {
+			const response = await fetch('https://lottery-gamma-three.vercel.app/six', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
