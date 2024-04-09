@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RequestPayload } from "./+server"
-  import {SECRET_API_KEY} from '$env/static/private';
+  import {PUBLIC_API_KEY} from '$env/static/public';
 
   let first: number
   let second: number
@@ -47,7 +47,7 @@
     fifth = arr[4]
 
 		try {
-      let url = `yourApi&apiKey=${SECRET_API_KEY}`;
+      let url = `yourApi&apiKey=${PUBLIC_API_KEY}`;
       const formData: RequestPayload = {
         first,
         second,
