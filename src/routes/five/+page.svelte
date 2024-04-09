@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { RequestPayload } from "./+server"
-  import {PUBLIC_API_KEY} from '$env/static/public';
 
   let first: number
   let second: number
@@ -47,7 +46,6 @@
     fifth = arr[4]
 
 		try {
-      let url = `yourApi&apiKey=${PUBLIC_API_KEY}`;
       const formData: RequestPayload = {
         first,
         second,
@@ -56,7 +54,7 @@
         fifth
       }
 
-			const response = await fetch(url, {
+			const response = await fetch('http://localhost:5173/five', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
