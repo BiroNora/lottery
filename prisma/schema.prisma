@@ -10,9 +10,14 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  url      = env("DATABASE_URL")
 }
+
+//datasource db {
+//  provider = "postgresql"
+//  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+//  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+//}
 
 model Five {
   five_id  Int @id @default(autoincrement())
@@ -41,4 +46,27 @@ model Six {
   s_sixth  Int
 
   @@map("six")
+}
+
+model Skandi {
+  sk_id   Int @id @default(autoincrement())
+  sk_year Int
+  sk_week Int
+  sk_total  BigInt
+  m_first  Int
+  m_second Int
+  m_third  Int
+  m_fourth  Int
+  m_fifth  Int
+  m_sixth  Int
+  m_seventh Int
+  h_first  Int
+  h_second Int
+  h_third  Int
+  h_fourth  Int
+  h_fifth  Int
+  h_sixth  Int
+  h_seventh Int
+
+  @@map("skandi")
 }

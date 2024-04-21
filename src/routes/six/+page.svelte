@@ -1,141 +1,190 @@
 <script lang="ts">
-	import type { RequestPayload } from "./+server"
+	import type { RequestPayload } from './+server';
+	import { formats, url_router } from '../../routes/stores/dataStore';
+	import { page } from '$app/stores';
 
-  let first: number
-  let second: number
-  let third: number
-  let fourth: number
-  let fifth: number
-  let sixth: number
-  const minValue = 1
-  const maxValue = 45
-  let lotteryData: any = []
-  let err_mess = false
-  let no_res = false
-  let show = false
-  let responseDataFormatted: any = null
+	let first: number;
+	let second: number;
+	let third: number;
+	let fourth: number;
+	let fifth: number;
+	let sixth: number;
+	const minValue = 1;
+	const maxValue = 45;
+	let lotteryData: any = [];
+	let err_mess = false;
+	let no_res = false;
+	let show = false;
+	let responseDataFormatted: any = null;
+	let url = '';
+	let folder_name = $page.url.pathname;
 
-  // For JSON visualization
+	// For JSON visualization
 	function formatAndSetResponseData(responseData: any) {
-		responseDataFormatted = JSON.stringify(responseData, null, 2)
+		responseDataFormatted = JSON.stringify(responseData, null, 2);
 	}
 
-  function formats(num: number) {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-  }
+	async function sendDataWithForm(event: any) {
+		err_mess = false;
+		no_res = false;
+		show = false;
+		event.preventDefault();
 
-  async function sendDataWithForm(event: any) {
-    err_mess = false
-    no_res = false
-    show = false
-		event.preventDefault()
-    if (first === second || first === third || first === fourth || first === fifth || first === sixth ||
-        second === third || second === fourth || second === fifth || second === sixth ||
-        third === fourth || third === fifth || third === sixth ||
-        fourth === fifth || fourth === sixth ||
-        fifth === sixth) {
-      console.error('Error: Two or more input fields have the same value')
-      err_mess = true
-      return
-    }
+		let nums = [first, second, third, fourth, fifth, sixth];
+		let arr = new Set(nums);
 
-    let arr = [first, second, third, fourth, fifth, sixth]
-    arr.sort((a, b) => a - b)
+		if (nums.length !== arr.size) {
+			err_mess = true;
+			return;
+		}
 
-    first = arr[0]
-    second = arr[1]
-    third = arr[2]
-    fourth = arr[3]
-    fifth = arr[4]
-    sixth = arr[5]
+		nums.sort((a, b) => a - b);
+
+		first = nums[0];
+		second = nums[1];
+		third = nums[2];
+		fourth = nums[3];
+		fifth = nums[4];
+		sixth = nums[5];
 
 		try {
-      const formData: RequestPayload = {
-        first,
-        second,
-        third,
-        fourth,
-        fifth,
-        sixth
-      }
+			const formData: RequestPayload = {
+				first,
+				second,
+				third,
+				fourth,
+				fifth,
+				sixth
+			};
 
-			const response = await fetch('https://lottery-gamma-three.vercel.app/six', {
+			url_router(url, folder_name);
+
+			const response = await fetch(url, {
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json',
+					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify(formData),
+				body: JSON.stringify(formData)
 			});
 			console.log(JSON.stringify(formData));
 			if (response.ok) {
 				const responseData = await response.json();
-					//formatAndSetResponseData(responseData);
-					lotteryData = responseData.lotteryData;
-					//console.log('RESPONSEData:' + responseData);
-          if ((!lotteryData) || lotteryData.length === 0) {
-            no_res = true
-          } else {
-            show = true
-          }
+				//formatAndSetResponseData(responseData);
+				lotteryData = responseData.lotteryData;
+				//console.log('RESPONSEData:' + responseData);
+				if (!lotteryData || lotteryData.length === 0) {
+					no_res = true;
 				} else {
-					console.error('Server error:', response.statusText);
+					show = true;
 				}
+			} else {
+				console.error('Server error:', response.statusText);
+			}
 		} catch (error) {
-				console.error('Error:', error);
+			console.error('Error:', error);
 		}
 	}
-
 </script>
 
-<div class="h-screen bg-no-repeat bg-cover" style="background-image: url('balls100.jpg');">
-  <body class="pt-12 bg-slate-900">
-    <div>
-      <br>
-      <p class="flex items-center justify-center font-poppins font-extrabold text-5xl text-gray-50">Search on Pick-6 Lottery</p>
+<div class="pt-12 h-screen bg-no-repeat bg-cover" style="background-image: url('balls100.jpg');">
+	<body class="bg-slate-500">
+		<div>
+			<p
+				class="p-5 mw-10 text-center font-poppins md:font-extrabold md:text-5xl text-3xl text-gray-50"
+			>
+				Search on Pick-6 Lottery
+			</p>
 
-      <!--<div class="response-data">
+			<!--<div class="response-data">
         <pre>{responseDataFormatted}</pre>
       </div>-->
 
-      <div class="pt-10 flex flex-col items-center justify-center font-poppins text-3xl font-semibold">
-        <form on:submit={sendDataWithForm}>
-          <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={first} min={minValue} max={maxValue} required>
-          <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={second} min={minValue} max={maxValue} required>
-          <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={third} min={minValue} max={maxValue} required>
-          <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={fourth} min={minValue} max={maxValue} required>
-          <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={fifth} min={minValue} max={maxValue} required>
-          <input class="rounded bg-slate-500 opacity-90 border border-gray-400 text-white font-bold text-opacity-100" type="number" bind:value={sixth} min={minValue} max={maxValue} required>
-          <button
-            class="text-white md:hover:text-lime-300 font-normal"
-            id="btn"
-            type="submit"
-          >
-          Confirm
-          </button>
-        </form>
-      </div>
-      <div class="pt-6 pb-6 flex flex-col items-center justify-center font-poppins font-extrabold text-white opacity-86 text-3xl">
-        {#if err_mess}
-          <div class="text-2xl font-normal">
-            <p><i>Numbers can not be the same.</i></p>
-          </div>
-        {/if}
+			<div class="flex flex-col items-center justify-center font-poppins text-3xl font-semibold">
+				<form on:submit={sendDataWithForm}>
+					<input
+						class="rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						type="number"
+						bind:value={first}
+						min={minValue}
+						max={maxValue}
+						required
+					/>
+					<input
+						class="rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						type="number"
+						bind:value={second}
+						min={minValue}
+						max={maxValue}
+						required
+					/>
+					<input
+						class="rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						type="number"
+						bind:value={third}
+						min={minValue}
+						max={maxValue}
+						required
+					/>
+					<input
+						class="rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						type="number"
+						bind:value={fourth}
+						min={minValue}
+						max={maxValue}
+						required
+					/>
+					<input
+						class="rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						type="number"
+						bind:value={fifth}
+						min={minValue}
+						max={maxValue}
+						required
+					/>
+					<input
+						class="rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						type="number"
+						bind:value={sixth}
+						min={minValue}
+						max={maxValue}
+						required
+					/>
+					<button
+						class="text-white md:hover:text-lime-300 font-normal md:text-3xl text-xl"
+						id="btn"
+						type="submit"
+					>
+						Confirm
+					</button>
+				</form>
+			</div>
+			<div
+				class="pt-6 pb-6 flex flex-col items-center justify-center font-poppins font-extrabold text-white opacity-86 text-3xl"
+			>
+				{#if err_mess}
+					<div class="text-2xl font-normal">
+						<p><i>Numbers can not be the same.</i></p>
+					</div>
+				{/if}
 
-        {#if no_res === true}
-          <div class="text-2xl font-normal">
-            <p>No result.</p>
-          </div>
-        {/if}
+				{#if no_res === true}
+					<div class="text-2xl font-normal">
+						<p>No result.</p>
+					</div>
+				{/if}
 
-        {#if show === true}
-          <div class="flex flex-col items-center justify-center">
-            {#each lotteryData as lot}
-              <p><span class="text-2xl font-normal">Amount:</span> {formats(lot.s_total)} <span class="text-2xl font-normal"> Ft</span></p>
-              <p><span class="text-2xl font-normal">Year/Week:</span> {lot.s_year}/{lot.s_week}</p>
-            {/each}
-          </div>
-        {/if}
-      </div>
-    </div>
-  </body>
+				{#if show === true}
+					<div class="flex flex-col items-center justify-center">
+						{#each lotteryData as lot}
+							<p>
+								<span class="text-2xl font-normal">Amount:</span>
+								{formats(lot.s_total)} <span class="text-2xl font-normal"> Ft</span>
+							</p>
+							<p><span class="text-2xl font-normal">Year/Week:</span> {lot.s_year}/{lot.s_week}</p>
+						{/each}
+					</div>
+				{/if}
+			</div>
+		</div>
+	</body>
 </div>

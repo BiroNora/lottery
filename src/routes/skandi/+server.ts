@@ -3,17 +3,25 @@ import { db } from '$lib/database';
 export async function POST({ request }) {
 	const requestBody = await request.text();
 	const formData = JSON.parse(requestBody);
-	const { first, second, third, fourth, fifth, sixth } = formData;
-	console.log(first, second, third, fourth, fifth, sixth);
+	const { first, second, third, fourth, fifth, sixth, seventh } = formData;
+	console.log(first, second, third, fourth, fifth, sixth, seventh);
 	try {
 		const lotteryData = await db.$queryRaw`
-      SELECT * FROM six
-      WHERE s_first IN (${first})
-        AND s_second IN (${second})
-        AND s_third IN (${third})
-        AND s_fourth IN (${fourth})
-        AND s_fifth IN (${fifth})
-        AND s_sixth IN (${sixth})
+      SELECT * FROM skandi
+      WHERE m_first IN (${first})
+        AND m_second IN (${second})
+        AND m_third IN (${third})
+        AND m_fourth IN (${fourth})
+        AND m_fifth IN (${fifth})
+        AND m_sixth IN (${sixth})
+        AND m_seventh IN (${seventh})
+        OR h_first IN (${first})
+        AND h_second IN (${second})
+        AND h_third IN (${third})
+        AND h_fourth IN (${fourth})
+        AND h_fifth IN (${fifth})
+        AND h_sixth IN (${sixth})
+        AND h_seventh IN (${seventh})
     `;
 		await db.$disconnect();
 		// Create a JSON response object
@@ -59,4 +67,5 @@ export type RequestPayload = {
 	fourth: number;
 	fifth: number;
 	sixth: number;
+	seventh: number;
 };

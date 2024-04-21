@@ -8,8 +8,11 @@
 	let third: number;
 	let fourth: number;
 	let fifth: number;
+	let sixth: number;
+	let seventh: number;
+	let numbers: number[] = [];
 	const minValue = 1;
-	const maxValue = 90;
+	const maxValue = 35;
 	let lotteryData: any = [];
 	let err_mess = false;
 	let no_res = false;
@@ -17,7 +20,6 @@
 	let responseDataFormatted: any = null;
 	let url = '';
 	let folder_name = $page.url.pathname;
-	console.log(folder_name);
 
 	// For JSON visualization
 	function formatAndSetResponseData(responseData: any) {
@@ -30,7 +32,7 @@
 		show = false;
 		event.preventDefault();
 
-		let nums = [first, second, third, fourth, fifth];
+		let nums = [first, second, third, fourth, fifth, sixth, seventh];
 		let arr = new Set(nums);
 
 		if (nums.length !== arr.size) {
@@ -45,6 +47,10 @@
 		third = nums[2];
 		fourth = nums[3];
 		fifth = nums[4];
+		sixth = nums[5];
+		seventh = nums[6];
+
+		numbers.push(first, second, third, fourth, fifth, sixth, seventh);
 
 		try {
 			const formData: RequestPayload = {
@@ -52,7 +58,9 @@
 				second,
 				third,
 				fourth,
-				fifth
+				fifth,
+				sixth,
+				seventh
 			};
 
 			url_router(url, folder_name);
@@ -69,7 +77,7 @@
 				const responseData = await response.json();
 				//formatAndSetResponseData(responseData);
 				lotteryData = responseData.lotteryData;
-				console.log('RESPONSEData:' + responseData);
+				//console.log('RESPONSEData:' + responseData);
 				if (!lotteryData || lotteryData.length === 0) {
 					no_res = true;
 				} else {
@@ -85,10 +93,12 @@
 </script>
 
 <div class="pt-12 h-screen bg-no-repeat bg-cover" style="background-image: url('balls100.jpg');">
-	<body class=" dark:bg-slate-500">
+	<body class="bg-slate-500">
 		<div>
-			<p class="p-5 text-center font-poppins md:font-extrabold md:text-5xl text-3xl text-gray-50">
-				Search on Pick-5 Lottery
+			<p
+				class="p-5 mw-10 text-center font-poppins md:font-extrabold md:text-5xl text-3xl text-gray-50"
+			>
+				Search on Skandi
 			</p>
 
 			<!--<div class="response-data">
@@ -96,7 +106,7 @@
       </div>-->
 
 			<div class="flex flex-col items-center justify-center font-poppins text-3xl font-semibold">
-				<form on:submit={sendDataWithForm}>
+				<form class="justify-center" on:submit={sendDataWithForm}>
 					<input
 						class="rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
 						type="number"
@@ -137,6 +147,22 @@
 						max={maxValue}
 						required
 					/>
+					<input
+						class="rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						type="number"
+						bind:value={sixth}
+						min={minValue}
+						max={maxValue}
+						required
+					/>
+					<input
+						class="rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						type="number"
+						bind:value={seventh}
+						min={minValue}
+						max={maxValue}
+						required
+					/>
 					<button
 						class="text-white md:hover:text-lime-300 font-normal md:text-3xl text-xl"
 						id="btn"
@@ -147,7 +173,7 @@
 				</form>
 			</div>
 			<div
-				class="pt-6 pb-6 flex flex-col items-center justify-center font-poppins font-bold text-white opacity-86 text-3xl"
+				class="pt-6 pb-6 flex flex-col items-center justify-center font-poppins font-extrabold text-white opacity-86 text-3xl"
 			>
 				{#if err_mess}
 					<div class="text-2xl font-normal">
@@ -166,9 +192,18 @@
 						{#each lotteryData as lot}
 							<p>
 								<span class="text-2xl font-normal">Amount:</span>
-								{formats(lot.f_total)} <span class="text-2xl font-normal"> Ft</span>
+								{formats(lot.sk_total)} <span class="text-2xl font-normal"> Ft</span>
 							</p>
-							<p><span class="text-2xl font-normal">Year/Week:</span> {lot.f_year}/{lot.f_week}</p>
+							<p>
+								<span class="text-2xl font-normal">Year/Week:</span>
+								{lot.sk_year}/{lot.sk_week}
+							</p>
+							{#if lot.m_first === numbers[0] && lot.m_second === numbers[1] && lot.m_third === numbers[2] && lot.m_fourth === numbers[3] && lot.m_fifth === numbers[4] && lot.m_sixth === numbers[5] && lot.m_seventh === numbers[6]}
+								<p class="text-2xl">Machine Draw</p>
+							{/if}
+							{#if lot.h_first === numbers[0] && lot.h_second === numbers[1] && lot.h_third === numbers[2] && lot.h_fourth === numbers[3] && lot.h_fifth === numbers[4] && lot.h_sixth === numbers[5] && lot.h_seventh === numbers[6]}
+								<p class="text-2xl">Hand Draw</p>
+							{/if}
 						{/each}
 					</div>
 				{/if}
