@@ -17,7 +17,6 @@
 	let responseDataFormatted: any = null;
 	let url = '';
 	let folder_name = $page.url.pathname;
-	console.log(folder_name);
 
 	// For JSON visualization
 	function formatAndSetResponseData(responseData: any) {
@@ -85,7 +84,7 @@
 </script>
 
 <div class="pt-12 h-screen bg-no-repeat bg-cover" style="background-image: url('balls100.jpg');">
-	<body class=" dark:bg-slate-500">
+	<body class=" bg-slate-500">
 		<div>
 			<p class="p-5 text-center font-poppins md:font-extrabold md:text-5xl text-3xl text-gray-50">
 				Search on Pick-5 Lottery

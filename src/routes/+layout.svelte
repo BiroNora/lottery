@@ -3,6 +3,11 @@
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 
 	injectSpeedInsights();
+	let is_menu_open = false;
+
+	function toggleMenu() {
+		is_menu_open = !is_menu_open;
+	}
 </script>
 
 <nav class="fixed top-0 left-0 w-full h-12 bg-teal-700">
@@ -19,25 +24,14 @@
 			>
 		</a>
 		<div>
-			<button
+			<a
+				on:click={toggleMenu}
 				id="hamburger-button"
-				data-collapse-toggle="navbar-default"
-				type="button"
-				class="inline-flex items-center p-1 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 cursor-pointer"
-				aria-controls="navbar-default"
-				aria-expanded="false"
+				class="relative h-8 w-8 cursor-pointer text-3xl md:hidden"
+				href="/"
 			>
-				<span class="sr-only">Open main menu</span>
-				<svg class="w-5 h-5" aria-hidden="true" fill="none" viewBox="0 0 17 14">
-					<path
-						stroke="currentColor"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M1 1h15M1 7h15M1 13h15"
-					/>
-				</svg>
-			</button>
+				&#9776;
+			</a>
 
 			<div class="hidden w-full md:block md:w-auto" id="navbar-default">
 				<ul
@@ -84,6 +78,44 @@
 		</div>
 	</div>
 </nav>
+
+{#if is_menu_open}
+	<nav
+		class="py-8 top-12 justify-center absolute w-full origin-top flex-col text-white bg-slate-500/80 font-poppins text-4xl"
+		aria-label="mobile"
+	>
+		<ul class="flex min-h-screen flex-col items-center">
+			<li class="pt-6 pb-7">
+				<a
+					on:click={toggleMenu}
+					href="/five"
+					class="w-full py-6 text-center font-medium">Pick 5</a>
+			</li>
+			<li class="pb-7">
+				<a
+					on:click={toggleMenu}
+					href="/six"
+					class="w-full py-6 text-center font-medium">Pick 6</a
+				>
+			</li>
+			<li class="pb-7">
+				<a
+					href="/skandi"
+					on:click={toggleMenu}
+					class="w-full py-6 text-center font-medium">Skandi</a
+				>
+			</li>
+			<li class="pt-10">
+				<a
+					href="/"
+					on:click={toggleMenu}
+					class="w-full py-8 text-5xl text-red-500 font-bold text-center">Home</a
+				>
+			</li>
+		</ul>
+	</nav>
+{/if}
+
 <main>
 	<slot />
 </main>
