@@ -27,7 +27,7 @@
 			<a
 				on:click={toggleMenu}
 				id="hamburger-button"
-				class="relative h-8 w-8 cursor-pointer text-3xl md:hidden"
+				class="text-white relative h-8 w-8 cursor-pointer text-3xl md:hidden"
 				href="/"
 			>
 				&#9776;

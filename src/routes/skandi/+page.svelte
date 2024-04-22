@@ -106,10 +106,10 @@
         <pre>{responseDataFormatted}</pre>
       </div>-->
 
-			<div class="flex flex-col items-center justify-center font-poppins text-3xl font-semibold">
+			<div class="text-center flex flex-col items-center justify-center font-poppins text-3xl font-semibold">
 				<form class="justify-center" on:submit={sendDataWithForm}>
 					<input
-						class="rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						class="md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
 						type="number"
 						bind:value={first}
 						min={minValue}
@@ -117,7 +117,7 @@
 						required
 					/>
 					<input
-						class="rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						class="md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
 						type="number"
 						bind:value={second}
 						min={minValue}
@@ -125,7 +125,7 @@
 						required
 					/>
 					<input
-						class="rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						class="md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
 						type="number"
 						bind:value={third}
 						min={minValue}
@@ -133,7 +133,7 @@
 						required
 					/>
 					<input
-						class="rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						class="md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
 						type="number"
 						bind:value={fourth}
 						min={minValue}
@@ -141,7 +141,7 @@
 						required
 					/>
 					<input
-						class="rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						class="md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
 						type="number"
 						bind:value={fifth}
 						min={minValue}
@@ -149,7 +149,7 @@
 						required
 					/>
 					<input
-						class="rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						class="md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
 						type="number"
 						bind:value={sixth}
 						min={minValue}
@@ -157,33 +157,35 @@
 						required
 					/>
 					<input
-						class="rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						class="md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
 						type="number"
 						bind:value={seventh}
 						min={minValue}
 						max={maxValue}
 						required
 					/>
-					<button
-						class="text-white md:hover:text-lime-300 font-normal md:text-3xl text-xl"
+					<div class="md:my-0 my-1 md:mx-0 mx-0.5 md:inline">
+						<button
+						class="text-white md:hover:text-lime-300 font-normal text-2xl md:text-3xl"
 						id="btn"
 						type="submit"
 					>
 						Confirm
 					</button>
+					</div>
 				</form>
 			</div>
 			<div
 				class="pt-6 pb-6 flex flex-col items-center justify-center font-poppins font-extrabold text-white opacity-86 text-3xl"
 			>
 				{#if err_mess}
-					<div class="text-2xl font-normal">
+					<div class="text-xl md:text-2xl font-normal">
 						<p><i>Numbers can not be the same.</i></p>
 					</div>
 				{/if}
 
 				{#if no_res === true}
-					<div class="text-2xl font-normal">
+					<div class="text-xl md:text-2xl font-normal">
 						<p>No result.</p>
 					</div>
 				{/if}
@@ -192,18 +194,18 @@
 					<div class="flex flex-col items-center justify-center">
 						{#each lotteryData as lot}
 							<p>
-								<span class="text-2xl font-normal">Amount:</span>
+								<span class="text-xl md:text-2xl font-normal">Amount:</span>
 								{formats(lot.sk_total)} <span class="text-2xl font-normal"> Ft</span>
 							</p>
 							<p>
-								<span class="text-2xl font-normal">Year/Week:</span>
+								<span class="text-xl md:text-2xl font-normal">Year/Week:</span>
 								{lot.sk_year}/{lot.sk_week}
 							</p>
 							{#if lot.m_first === numbers[0] && lot.m_second === numbers[1] && lot.m_third === numbers[2] && lot.m_fourth === numbers[3] && lot.m_fifth === numbers[4] && lot.m_sixth === numbers[5] && lot.m_seventh === numbers[6]}
-								<p class="text-2xl">Machine Draw</p>
+								<p class="text-xl md:text-2xl">Machine Draw</p>
 							{/if}
 							{#if lot.h_first === numbers[0] && lot.h_second === numbers[1] && lot.h_third === numbers[2] && lot.h_fourth === numbers[3] && lot.h_fifth === numbers[4] && lot.h_sixth === numbers[5] && lot.h_seventh === numbers[6]}
-								<p class="text-2xl">Hand Draw</p>
+								<p class="text-xl md:text-2xl">Hand Draw</p>
 							{/if}
 						{/each}
 					</div>
