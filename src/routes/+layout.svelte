@@ -86,23 +86,14 @@
 	>
 		<ul class="flex min-h-screen flex-col items-center">
 			<li class="pt-6 pb-7">
-				<a
-					on:click={toggleMenu}
-					href="/five"
-					class="w-full py-6 text-center font-medium">Pick 5</a>
+				<a on:click={toggleMenu} href="/five" class="w-full py-6 text-center font-medium">Pick 5</a>
 			</li>
 			<li class="pb-7">
-				<a
-					on:click={toggleMenu}
-					href="/six"
-					class="w-full py-6 text-center font-medium">Pick 6</a
-				>
+				<a on:click={toggleMenu} href="/six" class="w-full py-6 text-center font-medium">Pick 6</a>
 			</li>
 			<li class="pb-7">
-				<a
-					href="/skandi"
-					on:click={toggleMenu}
-					class="w-full py-6 text-center font-medium">Skandi</a
+				<a href="/skandi" on:click={toggleMenu} class="w-full py-6 text-center font-medium"
+					>Skandi</a
 				>
 			</li>
 			<li class="pt-10">

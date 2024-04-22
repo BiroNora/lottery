@@ -99,7 +99,9 @@
         <pre>{responseDataFormatted}</pre>
       </div>-->
 
-			<div class="text-center flex flex-col items-center justify-center font-poppins text-3xl font-semibold">
+			<div
+				class="text-center flex flex-col items-center justify-center font-poppins text-3xl font-semibold"
+			>
 				<form on:submit={sendDataWithForm}>
 					<input
 						class="md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
@@ -151,12 +153,13 @@
 					/>
 					<div class="md:my-0 my-1 md:mx-0 mx-0.5 md:inline">
 						<button
-						class="text-white md:hover:text-lime-300 font-normal text-2xl md:text-3xl"
-						id="btn"
-						type="submit"
-					>
-						Confirm
-					</button>
+							class="text-white md:hover:text-lime-300 font-normal text-2xl md:text-3xl"
+							id="btn"
+							type="submit"
+						>
+							Confirm
+						</button>
+					</div>
 				</form>
 			</div>
 			<div
@@ -181,7 +184,10 @@
 								<span class="text-xl md:text-2xl font-normal">Amount:</span>
 								{formats(lot.s_total)} <span class="text-2xl font-normal"> Ft</span>
 							</p>
-							<p><span class="text-xl md:text-2xl font-normal">Year/Week:</span> {lot.s_year}/{lot.s_week}</p>
+							<p>
+								<span class="text-xl md:text-2xl font-normal">Year/Week:</span>
+								{lot.s_year}/{lot.s_week}
+							</p>
 						{/each}
 					</div>
 				{/if}

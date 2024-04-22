@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "five" (
+CREATE TABLE IF NOT EXISTS "five" (
     "five_id" SERIAL NOT NULL,
     "f_year" INTEGER NOT NULL,
     "f_week" INTEGER NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE "five" (
 );
 
 -- CreateTable
-CREATE TABLE "six" (
+CREATE TABLE IF NOT EXISTS "six" (
     "six_id" SERIAL NOT NULL,
     "s_year" INTEGER NOT NULL,
     "s_week" INTEGER NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE "six" (
 );
 
 -- CreateTable
-CREATE TABLE "skandi" (
+CREATE TABLE IF NOT EXISTS "skandi" (
     "sk_id" SERIAL NOT NULL,
     "sk_year" INTEGER NOT NULL,
     "sk_week" INTEGER NOT NULL,
