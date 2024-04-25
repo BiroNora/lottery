@@ -110,7 +110,7 @@
 			>
 				<form class="justify-center" on:submit={sendDataWithForm}>
 					<input
-						class="md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						class="max-w-[152.6px] md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
 						type="number"
 						bind:value={first}
 						min={minValue}
@@ -118,7 +118,7 @@
 						required
 					/>
 					<input
-						class="md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						class="max-w-[152.6px] md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
 						type="number"
 						bind:value={second}
 						min={minValue}
@@ -126,7 +126,7 @@
 						required
 					/>
 					<input
-						class="md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						class="max-w-[152.6px] md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
 						type="number"
 						bind:value={third}
 						min={minValue}
@@ -134,7 +134,7 @@
 						required
 					/>
 					<input
-						class="md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						class="max-w-[152.6px] md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
 						type="number"
 						bind:value={fourth}
 						min={minValue}
@@ -142,7 +142,7 @@
 						required
 					/>
 					<input
-						class="md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						class="max-w-[152.6px] md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
 						type="number"
 						bind:value={fifth}
 						min={minValue}
@@ -150,7 +150,7 @@
 						required
 					/>
 					<input
-						class="md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						class="max-w-[152.6px] md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
 						type="number"
 						bind:value={sixth}
 						min={minValue}
@@ -158,7 +158,7 @@
 						required
 					/>
 					<input
-						class="md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
+						class="max-w-[152.6px] md:my-0 my-1 md:mx-0 mx-0.5 rounded bg-slate-400 opacity-90 border-2 border-lime-300 text-white font-bold text-opacity-100"
 						type="number"
 						bind:value={seventh}
 						min={minValue}
@@ -167,7 +167,7 @@
 					/>
 					<div class="md:my-0 my-1 md:mx-0 mx-0.5 md:inline">
 						<button
-							class="text-white md:hover:text-lime-300 font-normal text-2xl md:text-3xl"
+							class="max-w-[152.6px] text-white md:hover:text-lime-300 font-normal text-2xl md:text-3xl"
 							id="btn"
 							type="submit"
 						>
