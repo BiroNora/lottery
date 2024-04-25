@@ -2,14 +2,12 @@
 .DS_Store
 .env
 .env.*
-.ipynb*
+*.ipynb*
 .vercel
 /.svelte-kit
 /build
 /package
 data
-Lotto_table_upload.ipynb
-Lotto_table_upload-Copy1.ipynb
 node_modules
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
