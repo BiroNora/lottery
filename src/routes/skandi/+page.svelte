@@ -50,6 +50,7 @@
 		sixth = nums[5];
 		seventh = nums[6];
 
+		numbers = []
 		numbers.push(first, second, third, fourth, fifth, sixth, seventh);
 
 		try {
