@@ -48,7 +48,6 @@
     "@vercel/postgres": "^0.8.0",
     "@vercel/speed-insights": "^1.0.10",
     "prisma": "^5.13.0",
-    "uuid": "^7.0.3",
-    "ws": "^8.17.1"
+    "uuid": "^7.0.3"
   }
 }
