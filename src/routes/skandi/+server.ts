@@ -4,25 +4,39 @@ export async function POST({ request }) {
 	const requestBody = await request.text();
 	const formData = JSON.parse(requestBody);
 	const { first, second, third, fourth, fifth, sixth, seventh } = formData;
-	console.log(first, second, third, fourth, fifth, sixth, seventh);
+	//console.log(first, second, third, fourth, fifth, sixth, seventh);
+	
+	const numbers = [first, second, third, fourth, fifth, sixth, seventh].sort((a, b) => a - b);
+	const [m_first, m_second, m_third, m_fourth, m_fifth, m_sixth, m_seventh] = numbers;
+	
 	try {
-		const lotteryData = await db.$queryRaw`
-      SELECT * FROM skandi
-      WHERE m_first IN (${first})
-        AND m_second IN (${second})
-        AND m_third IN (${third})
-        AND m_fourth IN (${fourth})
-        AND m_fifth IN (${fifth})
-        AND m_sixth IN (${sixth})
-        AND m_seventh IN (${seventh})
-        OR h_first IN (${first})
-        AND h_second IN (${second})
-        AND h_third IN (${third})
-        AND h_fourth IN (${fourth})
-        AND h_fifth IN (${fifth})
-        AND h_sixth IN (${sixth})
-        AND h_seventh IN (${seventh})
-    `;
+		// Első lekérdezés: Keressük az 'm' oszlopokban
+		let lotteryData = await db.skandi.findMany({
+			where: {
+				m_first,
+				m_second,
+				m_third,
+				m_fourth,
+				m_fifth,
+				m_sixth,
+				m_seventh
+			}
+		});
+
+		if (lotteryData.length === 0) {
+			lotteryData = await db.skandi.findMany({
+				where: {
+					h_first: m_first, // Az 'm' változókat használjuk a 'h' oszlopok lekérdezéséhez
+					h_second: m_second,
+					h_third: m_third,
+					h_fourth: m_fourth,
+					h_fifth: m_fifth,
+					h_sixth: m_sixth,
+					h_seventh: m_seventh
+				}
+			});
+		}
+		
 		await db.$disconnect();
 		// Create a JSON response object
 		const stringifyBigInts = (key, value) => {
