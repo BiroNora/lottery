@@ -3,17 +3,22 @@ import { db } from '$lib/database';
 export async function POST({ request }) {
 	const requestBody = await request.text();
 	const formData = JSON.parse(requestBody);
-	const { first, second, third, fourth, fifth } = formData;
-	console.log(first, second, third, fourth, fifth);
+	let { first, second, third, fourth, fifth } = formData;
+
+	const numbers = [first, second, third, fourth, fifth].sort((a, b) => a - b);
+	const [f_first, f_second, f_third, f_fourth, f_fifth] = numbers;
+	
+	//console.log(first, second, third, fourth, fifth);
 	try {
-		const lotteryData = await db.$queryRaw`
-      SELECT * FROM five
-      WHERE f_first IN (${first})
-        AND f_second IN (${second})
-        AND f_third IN (${third})
-        AND f_fourth IN (${fourth})
-        AND f_fifth IN (${fifth})
-    `;
+		const lotteryData = await db.five.findMany({
+			where: {
+				f_first,
+				f_second,
+				f_third,
+				f_fourth,
+				f_fifth
+			}
+		});
 		await db.$disconnect();
 		// Create a JSON response object
 		const stringifyBigInts = (key, value) => {
