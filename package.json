@@ -48,7 +48,7 @@
     "@vercel/postgres": "^0.8.0",
     "@vercel/speed-insights": "^1.0.10",
     "prisma": "^5.13.0",
-    "uuid": "^7.0.3"
+    "uuid": "^14.0.0"
   },
   "overrides": {
     "tar": ">=7.5.11",
